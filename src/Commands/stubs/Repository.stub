@@ -10,7 +10,11 @@ class {{MODEL}}Repository implements {{MODEL}}Contract
    {
 
    }
-   public function read()
+   public function find()
+   {
+
+   }
+   public function list()
    {
 
    }

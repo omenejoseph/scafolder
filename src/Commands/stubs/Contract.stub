@@ -11,7 +11,8 @@ use App\Repositories\EmployeeRepository;
 interface {{MODEL}}Contract
 {
    public function create();
-   public function read();
+   public function find();
+   public function list();
    public function update();
    public function destroy();
 }
