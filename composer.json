@@ -1,12 +1,12 @@
 {
     "name": "omenejoseph/scafolder",
-    "description": ":package_description",
+    "description": ":scafolding laravel files",
     "license": "license",
     "authors": [
         {
-            "name": "author name",
-            "email": "author email",
-            "homepage": "author homepage"
+            "name": "Omene Joseph",
+            "email": "runoomene01@gmail.com",
+            "homepage": "https://omenejoseph.com.mg"
         }
     ],
     "homepage": "https://github.com/omenejoseph/scafolder",
