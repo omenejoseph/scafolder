@@ -1,0 +1,43 @@
+{
+    "name": "omenejoseph/scafolder",
+    "description": ":package_description",
+    "license": "license",
+    "authors": [
+        {
+            "name": "author name",
+            "email": "author email",
+            "homepage": "author homepage"
+        }
+    ],
+    "homepage": "https://github.com/omenejoseph/scafolder",
+    "keywords": ["Laravel", "Scafolder"],
+    "require": {
+        "illuminate/support": "~5|~6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3|~4",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "OmeneJoseph\\Scafolder\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OmeneJoseph\\Scafolder\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OmeneJoseph\\Scafolder\\ScafolderServiceProvider"
+            ],
+            "aliases": {
+                "Scafolder": "OmeneJoseph\\Scafolder\\Facades\\Scafolder"
+            }
+        }
+    }
+}

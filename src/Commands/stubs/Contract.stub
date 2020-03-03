@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Contracts;
+
+/**
+ * [interface description]
+ * @var [type]
+ * @see {{MODEL}}Repository
+ */
+interface {{MODEL}}Interface
+{
+
+}
