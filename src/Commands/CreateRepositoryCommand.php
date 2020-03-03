@@ -80,7 +80,7 @@ class CreateRepositoryCommand extends Command
 
 
         $this->info('Dumping Autoload, Please wait...!');
-//        $this->composer->dumpAutoloads();
+        $this->composer->dumpAutoloads();
     }
 
     /**
