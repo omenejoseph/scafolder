@@ -24,7 +24,7 @@ class CreateRepositoryCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:enum {model}';
+    protected $signature = 'make:repo {model}';
 
     /**
      * The console command description.
@@ -52,7 +52,7 @@ class CreateRepositoryCommand extends Command
     const PROVIDER = 'provider';
 
     /**
-     * Create a new soa validation class.
+     * Create a new soa Repository      .
      * @param Filesystem $files
      * @param Composer $composer
      * @return void
@@ -63,7 +63,6 @@ class CreateRepositoryCommand extends Command
         $this->composer = $composer;
 
         $this->files = $files;
-
     }
 
 
@@ -78,6 +77,10 @@ class CreateRepositoryCommand extends Command
         $this->createContract()
             ->createRepository()
             ->createProvider();
+
+
+        $this->info('Dumping Autoload, Please wait...!');
+//        $this->composer->dumpAutoloads();
     }
 
     /**
@@ -120,25 +123,26 @@ class CreateRepositoryCommand extends Command
      */
     private function createFile(string $directory_name)
     {
-        $directory = app_path(ucfirst($directory_name).'s');
-
+        $directory = ucfirst($this->getDirectory($directory_name));
         $data = $this->getStub($directory_name);
-
         $this->createDirectory($directory);
 
-        $path = $this->getMyFilePath($directory);
+        $path = $this->getMyFilePath($directory, $directory_name);
 
         $this->files->put($path, $data);
 
-        $file_name = $this->getFileName($directory);
+        $file_name = $this->getFileName($directory_name);
 
         $this->info($file_name .  " class created");
 
-        $this->info('Dumping Autoload, Please wait...!');
-
-        $this->composer->dumpAutoloads();
-
         $this->info('Process Completed...!');
+    }
+
+    private function getDirectory($directory_name)
+    {
+        return $directory_name == self::REPOSITORY ?
+                    app_path(ucfirst(str_replace('y', 'ies', $directory_name))):
+                    app_path(ucfirst($directory_name).'s');
     }
 
     /**
@@ -172,20 +176,20 @@ class CreateRepositoryCommand extends Command
      * Creates a dynamic path based on the argument of title passed
      * to the command
      * @param $directory
+     * @param $file_name
      * @return string
      */
-    private function getMyFilePath(string $directory) : string
+    private function getMyFilePath(string $directory, $file_name) : string
     {
-        $file_name = $this->getFileName($directory);
+        $file_name = $this->getFileName($file_name);
         return $directory . '/' . $file_name . '.php';
     }
 
-    private function getFileName(string $directory) : string
+    private function getFileName($file_name) : string
     {
-        $suffix = $directory !== self::PROVIDER
-            ? substr($directory, -1, 1)
-            : "service" . substr($directory, -1, 1);
-
-        return Str::studly($this->title . $suffix);
+        $suffix = $file_name !== self::PROVIDER
+            ? $file_name
+            : "service" . $file_name;
+        return Str::studly($this->title . '_' . $suffix);
     }
 }

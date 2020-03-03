@@ -1,13 +1,17 @@
 <?php
 
 namespace App\Contracts;
+use App\Repositories\EmployeeRepository;
 
 /**
  * [interface description]
  * @var [type]
  * @see {{MODEL}}Repository
  */
-interface {{MODEL}}Interface
+interface {{MODEL}}Contract
 {
-
+   public function create();
+   public function read();
+   public function update();
+   public function destroy();
 }

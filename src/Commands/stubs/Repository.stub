@@ -2,12 +2,24 @@
 
 namespace App\Repositories;
 
-use App\Contracts\{{MODEL}}Interface;
+use App\Contracts\{{MODEL}}Contract;
 
-class {{MODEL}}Repository implements {{MODEL}}Interface
+class {{MODEL}}Repository implements {{MODEL}}Contract
 {
-   public function create();
-   public function read();
-   public function update();
-   public function destroy();
+   public function create()
+   {
+
+   }
+   public function read()
+   {
+
+   }
+   public function update()
+   {
+
+   }
+   public function destroy()
+   {
+
+   }
 }
