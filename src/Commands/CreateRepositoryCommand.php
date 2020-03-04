@@ -9,9 +9,11 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
 use Illuminate\Support\Str;
+use OmeneJoseph\Scafolder\Traits\CommandsTrait;
 
 class CreateRepositoryCommand extends Command
 {
+    use CommandsTrait;
     /**
      * The console command name.
      *
@@ -124,7 +126,7 @@ class CreateRepositoryCommand extends Command
     private function createFile(string $directory_name)
     {
         $directory = ucfirst($this->getDirectory($directory_name));
-        $data = $this->getStub($directory_name);
+        $data = $this->getStub($directory_name, __DIR__);
         $this->createDirectory($directory);
 
         $path = $this->getMyFilePath($directory, $directory_name);
@@ -143,33 +145,6 @@ class CreateRepositoryCommand extends Command
         return $directory_name == self::REPOSITORY ?
                     app_path(ucfirst(str_replace('y', 'ies', $directory_name))):
                     app_path(ucfirst($directory_name).'s');
-    }
-
-    /**
-     * replaces the dynamic data in the stub with data passed as argument to the create file
-     * @param string $type
-     * @return mixed
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
-    private function getStub(string  $type)
-    {
-        $stub_name = ucfirst($type);
-        $stub = $this->files->get(__DIR__ . "/stubs/$stub_name.stub");
-        return str_replace("{{MODEL}}", $this->title, $stub);
-    }
-
-    /**
-     * Checks for existence of specified directory in the project's root folder and creates
-     * it if it does not exist
-     * @param string $directory
-     * @return void
-     */
-    private function createDirectory($directory) : void
-    {
-         (! $this->files->exists($directory)) ?
-            $this->files->makeDirectory(
-                $directory)
-         : null;
     }
 
     /**
