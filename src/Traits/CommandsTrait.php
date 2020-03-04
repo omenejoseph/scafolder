@@ -2,6 +2,7 @@
 
 
 namespace OmeneJoseph\Scafolder\Traits;
+use Illuminate\Support\Str;
 
 
 trait CommandsTrait
@@ -17,7 +18,7 @@ trait CommandsTrait
     {
         $stub_name = ucfirst($type);
         $stub = $this->files->get($dir . "/stubs/$stub_name.stub");
-        return str_replace("{{NAME}}", $this->title, $stub);
+        return str_replace("{{NAME}}", Str::studly($this->title), $stub);
     }
 
     /**
