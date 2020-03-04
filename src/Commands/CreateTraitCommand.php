@@ -4,6 +4,7 @@
 namespace OmeneJoseph\Scafolder\Commands;
 
 
+use function Couchbase\defaultDecoder;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
@@ -117,6 +118,7 @@ class CreateTraitCommand extends Command
 
     private function getFileName() : string
     {
-        return Str::studly($this->title . '_' . 'trait');
+        $title = $this->title. '_' . 'trait';
+        return Str::studly($title);
     }
 }
