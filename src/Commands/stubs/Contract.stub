@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Contracts;
-use App\Repositories\EmployeeRepository;
+use App\Repositories\{{MODEL}}Repository;
 
 /**
- * [interface description]
+ * [repository description]
  * @var [type]
  * @see {{MODEL}}Repository
  */

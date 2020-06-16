@@ -14,11 +14,11 @@ trait CommandsTrait
      * @return mixed
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function getStub(string  $type, $dir)
+    private function getStub(string  $type, string $dir, string $replacement = 'NAME')
     {
         $stub_name = ucfirst($type);
         $stub = $this->files->get($dir . "/stubs/$stub_name.stub");
-        return str_replace("{{NAME}}", Str::studly($this->title), $stub);
+        return str_replace("$replacement", Str::studly($this->title), $stub);
     }
 
     /**

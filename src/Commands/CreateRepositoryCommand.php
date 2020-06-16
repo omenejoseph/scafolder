@@ -126,7 +126,7 @@ class CreateRepositoryCommand extends Command
     private function createFile(string $directory_name)
     {
         $directory = ucfirst($this->getDirectory($directory_name));
-        $data = $this->getStub($directory_name, __DIR__);
+        $data = $this->getStub($directory_name, __DIR__, "{{MODEL}}");
         $this->createDirectory($directory);
 
         $path = $this->getMyFilePath($directory, $directory_name);
