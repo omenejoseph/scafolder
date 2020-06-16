@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Services;
+
+/**
+ * [service description]
+ */
+class {{NAME}}Service
+{
+   public function create()
+   {
+
+   }
+
+   public function find()
+   {
+
+   }
+
+   public function list()
+   {
+
+   }
+
+   public function update()
+   {
+
+   }
+
+   public function destroy()
+   {
+
+   }
+}

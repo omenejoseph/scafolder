@@ -4,6 +4,7 @@ namespace OmeneJoseph\Scafolder;
 
 use Illuminate\Support\ServiceProvider;
 use OmeneJoseph\Scafolder\Commands\CreateRepositoryCommand;
+use OmeneJoseph\Scafolder\Commands\CreateServiceCommand;
 use OmeneJoseph\Scafolder\Commands\CreateTraitCommand;
 
 class ScafolderServiceProvider extends ServiceProvider
@@ -79,6 +80,6 @@ class ScafolderServiceProvider extends ServiceProvider
         ], 'scafolder.views');*/
 
         // Registering package commands.
-         $this->commands([CreateRepositoryCommand::class, CreateTraitCommand::class]);
+         $this->commands([CreateRepositoryCommand::class, CreateTraitCommand::class, CreateServiceCommand::class]);
     }
 }
