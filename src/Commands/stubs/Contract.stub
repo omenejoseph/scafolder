@@ -10,9 +10,9 @@ use App\Repositories\{{MODEL}}Repository;
  */
 interface {{MODEL}}Contract
 {
-   public function create();
-   public function find();
+   public function create(array $data);
+   public function find(int $id);
    public function list();
-   public function update();
-   public function destroy();
+   public function update(int $id, array $data);
+   public function destroy(int $id);
 }
